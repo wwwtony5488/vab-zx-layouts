@@ -21,11 +21,11 @@
       </template>
       <el-menu-item class="switch-wrapper">
         <el-switch
-          active-text="測試模式"
-          v-model="isDevMode">
-        </el-switch>
+          :active-text="activeText"
+          :value="isDevMode"
+          @change="handleSwitch"
+        ></el-switch>
       </el-menu-item>
-
     </el-menu>
   </el-scrollbar>
 </template>
@@ -39,8 +39,17 @@
     data() {
       return {
         uniqueOpened,
-        isDevMode: false,
       }
+    },
+    props: {
+      activeText: {
+        type: String,
+        default: '測試模式',
+      },
+      isDevMode: {
+        type: Boolean,
+        default: true,
+      },
     },
     computed: {
       ...mapGetters({
@@ -62,6 +71,11 @@
       },
       variables() {
         return variables
+      },
+    },
+    methods: {
+      handleSwitch(value) {
+        this.$emit('onSwitch', value)
       },
     },
   }
@@ -151,7 +165,7 @@
         }
 
         span {
-          color: #41B584;
+          color: #41b584;
         }
       }
     }
