@@ -21,7 +21,7 @@
       </template>
       <el-menu-item class="switch-wrapper">
         <el-switch
-          v-model="isDevMode"
+          v-model="_isDevMode"
           :active-text="activeText"
           @change="handleSwitch"
         ></el-switch>
@@ -39,7 +39,7 @@
     data() {
       return {
         uniqueOpened,
-        isDevMode: this._isDevMode,
+        _isDevMode: this.isDevMode,
       }
     },
     props: {
@@ -47,7 +47,7 @@
         type: String,
         default: '測試模式',
       },
-      _isDevMode: {
+      isDevMode: {
         type: Boolean,
         default: true,
       },
