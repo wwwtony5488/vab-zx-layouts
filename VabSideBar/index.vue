@@ -19,11 +19,14 @@
           :item="route"
         />
       </template>
-      <el-menu-item class="switch-wrapper">
+      <el-menu-item
+        class="switch-wrapper"
+        :class="isTestModeTemp && 'is-test-active'"
+        @click="handleClickSwitch"
+      >
         <el-switch
           v-model="isTestModeTemp"
           :active-text="activeText"
-          @change="handleSwitch"
         ></el-switch>
       </el-menu-item>
     </el-menu>
@@ -75,8 +78,9 @@
       },
     },
     methods: {
-      handleSwitch(value) {
-        this.$emit('onSwitch', value)
+      handleClickSwitch(event) {
+        this.isTestModeTemp = !this.isTestModeTemp
+        this.$emit('onSwitch', this.isTestModeTemp)
       },
     },
   }
@@ -166,6 +170,10 @@
         }
 
         span {
+          color: #fff;
+        }
+
+        &.is-test-active span {
           color: #41b584;
         }
       }
