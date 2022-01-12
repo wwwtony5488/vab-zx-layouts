@@ -25,6 +25,7 @@
         @click="handleClickSwitch"
       >
         <el-switch
+          class="pe-none"
           v-model="isTestModeTemp"
           :active-text="activeText"
         ></el-switch>
