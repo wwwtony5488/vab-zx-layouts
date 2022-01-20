@@ -89,12 +89,12 @@
 <style lang="scss" scoped>
   @mixin active {
     &:hover {
-      color: $base-color-white !important;
+      color: $base-color-white;
       background-color: $base-menu-background-active !important;
     }
 
     &.is-active {
-      color: $base-color-white !important;
+      color: $base-color-white;
       background-color: $base-menu-background-active !important;
     }
   }
