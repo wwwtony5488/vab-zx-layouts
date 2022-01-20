@@ -171,11 +171,12 @@
         }
 
         span {
-          color: #fff;
+          font-weight: 400;
+          color: $base-font-color;
         }
 
         &.is-test-active span {
-          color: #41b584;
+          color: $base-color-default;
         }
       }
     }
