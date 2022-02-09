@@ -86,6 +86,13 @@
     },
   }
 </script>
+
+<style lang="scss">
+  .is-collapse .switch-wrapper {
+    padding-left: 0.75rem !important;
+  }
+</style>
+
 <style lang="scss" scoped>
   @mixin active {
     &:hover {
@@ -173,6 +180,8 @@
         span {
           font-weight: 400;
           color: $base-font-color;
+          visibility: visible;
+          height: 20px;
         }
 
         &.is-test-active span {
