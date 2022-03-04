@@ -75,9 +75,8 @@
       },
     },
     methods: {
-      handleClickSwitch(event) {
-        this.isTestModeTemp = !this.isTestModeTemp
-        this.$emit('onSwitch', this.isTestModeTemp)
+      handleClickSwitch() {
+        this.$emit('onSwitch', !this.isTestmode)
       },
     },
   }
