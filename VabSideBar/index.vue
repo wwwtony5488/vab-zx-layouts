@@ -21,12 +21,12 @@
       </template>
       <el-menu-item
         class="switch-wrapper"
-        :class="isTestModeTemp && 'is-test-active'"
+        :class="isTestmode && 'is-test-active'"
         @click="handleClickSwitch"
       >
         <el-switch
           class="pe-none"
-          v-model="isTestModeTemp"
+          v-model="isTestmode"
           :active-text="activeText"
         ></el-switch>
       </el-menu-item>
@@ -43,7 +43,6 @@
     data() {
       return {
         uniqueOpened,
-        isTestModeTemp: this.isTestMode,
       }
     },
     props: {
@@ -51,15 +50,12 @@
         type: String,
         default: '測試模式',
       },
-      isTestMode: {
-        type: Boolean,
-        default: true,
-      },
     },
     computed: {
       ...mapGetters({
         collapse: 'settings/collapse',
         routes: 'routes/routes',
+        isTestmode: 'merchant/isTestmode',
       }),
       defaultOpens() {
         if (this.collapse) {
