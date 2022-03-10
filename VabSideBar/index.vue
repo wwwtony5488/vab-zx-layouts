@@ -8,9 +8,11 @@
       :default-active="activeMenu"
       :collapse="collapse"
       :collapse-transition="false"
-      :default-openeds="defaultOpens"
+      :default-openeds="defaultOpen"
       :unique-opened="uniqueOpened"
       mode="vertical"
+      @open="handleOpen"
+      @close="handleClose"
     >
       <template v-for="route in routes">
         <vab-side-bar-item
@@ -43,6 +45,7 @@
     data() {
       return {
         uniqueOpened,
+        defaultOpen: [],
       }
     },
     props: {
@@ -78,6 +81,15 @@
       handleClickSwitch() {
         this.$emit('onSwitch', !this.isTestmode)
       },
+      handleOpen(path) {
+        this.defaultOpen = [path]
+        if (path.includes('/test')) {
+          }
+          this.defaultOpen.push(path.includes('/test') ? path.replace('/test', '') : `/test${path}`)
+      },
+      handleClose(path) {
+        this.defaultOpen = []
+      }
     },
   }
 </script>
