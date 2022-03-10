@@ -54,6 +54,17 @@
         default: '測試模式',
       },
     },
+    watch: {
+      defaultOpen: {
+        immediate: true,
+        deep: true,
+        handler() {
+          if (this.defaultOpen.length === 1) {
+            this.defaultOpen = []
+          }
+        },
+      },
+    },
     computed: {
       ...mapGetters({
         collapse: 'settings/collapse',
@@ -77,19 +88,22 @@
         return variables
       },
     },
+    created() {
+      this.handleOpen(this.$route.matched[0].path)
+    },
     methods: {
       handleClickSwitch() {
         this.$emit('onSwitch', !this.isTestmode)
       },
       handleOpen(path) {
-        this.defaultOpen = [path]
-        if (path.includes('/test')) {
-          }
-          this.defaultOpen.push(path.includes('/test') ? path.replace('/test', '') : `/test${path}`)
+        this.defaultOpen = [
+          path,
+          path.includes('/test') ? path.replace('/test', '') : `/test${path}`,
+        ]
       },
-      handleClose(path) {
+      handleClose() {
         this.defaultOpen = []
-      }
+      },
     },
   }
 </script>
