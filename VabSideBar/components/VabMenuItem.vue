@@ -73,7 +73,8 @@
           } else if (isExternal(this.fullPath)) {
             window.location.href = this.fullPath
           } else if (
-            this.$route.path !== path.resolve(this.fullPath, routePath)
+            this.$route.path !== path.resolve(this.fullPath, routePath) ||
+            Object.values(this.$route.query).length
           ) {
             this.$router.push(path.resolve(this.fullPath, routePath))
           }
