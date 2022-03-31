@@ -53,6 +53,10 @@
         type: String,
         default: '測試模式',
       },
+      isLockSwitch: {
+        type: Boolean,
+        default: false,
+      },
     },
     watch: {
       defaultOpen: {
@@ -93,6 +97,9 @@
     },
     methods: {
       handleClickSwitch() {
+        if (this.isLockSwitch) {
+          return
+        }
         this.$emit('onSwitch', !this.isTestmode)
       },
       handleOpen(path) {
